@@ -1,0 +1,301 @@
+{% extends "layouts/dashboard_base.html" %}
+
+{% block title %}
+Add Student
+{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+        <h2 class="fw-bold">Add Student</h2>
+        <small class="text-muted">
+            Register a new student
+        </small>
+    </div>
+
+    <a href="{{ url_for('student.index') }}"
+       class="btn btn-secondary">
+        ← Back
+    </a>
+
+</div>
+
+
+<form method="POST">
+
+<div class="card shadow">
+
+<div class="card-header">
+    <strong>Student Information</strong>
+</div>
+
+<div class="card-body">
+
+<div class="row">
+
+    <!-- Student Number -->
+
+    <div class="col-md-4 mb-3">
+
+        <label class="form-label">
+            Student Number
+        </label>
+
+        <input
+            type="text"
+            name="student_number"
+            class="form-control"
+            required>
+
+    </div>
+
+    <!-- First Name -->
+
+    <div class="col-md-4 mb-3">
+
+        <label class="form-label">
+            First Name
+        </label>
+
+        <input
+            type="text"
+            name="first_name"
+            class="form-control"
+            required>
+
+    </div>
+
+    <!-- Middle Name -->
+
+    <div class="col-md-4 mb-3">
+
+        <label class="form-label">
+            Middle Name
+        </label>
+
+        <input
+            type="text"
+            name="middle_name"
+            class="form-control">
+
+    </div>
+
+    <!-- Last Name -->
+
+    <div class="col-md-4 mb-3">
+
+        <label class="form-label">
+            Last Name
+        </label>
+
+        <input
+            type="text"
+            name="last_name"
+            class="form-control"
+            required>
+
+    </div>
+
+    <!-- Sex -->
+
+    <div class="col-md-2 mb-3">
+
+        <label class="form-label">
+            Sex
+        </label>
+
+        <select
+            name="sex"
+            class="form-select">
+
+            <option value="Male">Male</option>
+
+            <option value="Female">Female</option>
+
+        </select>
+
+    </div>
+
+    <!-- Birthdate -->
+
+    <div class="col-md-3 mb-3">
+
+        <label class="form-label">
+            Birthdate
+        </label>
+
+        <input
+            type="date"
+            name="birthdate"
+            class="form-control">
+
+    </div>
+
+    <!-- Email -->
+
+    <div class="col-md-3 mb-3">
+
+        <label class="form-label">
+            Email
+        </label>
+
+        <input
+            type="email"
+            name="email"
+            class="form-control">
+
+    </div>
+
+    <!-- Contact -->
+
+    <div class="col-md-4 mb-3">
+
+        <label class="form-label">
+            Contact Number
+        </label>
+
+        <input
+            type="text"
+            name="contact_number"
+            class="form-control">
+
+    </div>
+
+    <!-- Address -->
+
+    <div class="col-md-8 mb-3">
+
+        <label class="form-label">
+            Address
+        </label>
+
+        <textarea
+            name="address"
+            class="form-control"
+            rows="2"></textarea>
+
+    </div>
+
+    <!-- Course -->
+
+    <div class="col-md-4 mb-3">
+
+        <label class="form-label">
+            Course
+        </label>
+
+        <select
+            name="course_id"
+            class="form-select">
+
+            {% for course in courses %}
+
+            <option value="{{ course.course_id }}">
+
+                {{ course.course_code }}
+
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+    </div>
+
+    <!-- Section -->
+
+    <div class="col-md-4 mb-3">
+
+        <label class="form-label">
+            Section
+        </label>
+
+        <select
+            name="section_id"
+            class="form-select">
+
+            {% for section in sections %}
+
+            <option value="{{ section.section_id }}">
+
+                {{ section.section_name }}
+
+            </option>
+
+            {% endfor %}
+
+        </select>
+
+    </div>
+
+    <!-- Year -->
+
+    <div class="col-md-2 mb-3">
+
+        <label class="form-label">
+            Year Level
+        </label>
+
+        <select
+            name="year_level"
+            class="form-select">
+
+            <option value="1">1</option>
+
+            <option value="2">2</option>
+
+            <option value="3">3</option>
+
+            <option value="4">4</option>
+
+        </select>
+
+    </div>
+
+    <!-- Status -->
+
+    <div class="col-md-2 mb-3">
+
+        <label class="form-label">
+            Status
+        </label>
+
+        <select
+            name="status"
+            class="form-select">
+
+            <option value="Active">
+                Active
+            </option>
+
+            <option value="Inactive">
+                Inactive
+            </option>
+
+        </select>
+
+    </div>
+
+</div>
+
+</div>
+
+<div class="card-footer text-end">
+
+    <button
+        type="submit"
+        class="btn btn-primary">
+
+        💾 Save Student
+
+    </button>
+
+</div>
+
+</div>
+
+</form>
+
+{% endblock %}

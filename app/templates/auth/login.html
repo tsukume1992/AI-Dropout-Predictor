@@ -1,0 +1,220 @@
+{% extends "layouts/base.html" %}
+
+{% block title %}
+Project SENTINEL | Login
+{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center align-items-center" style="min-height:80vh;">
+
+    <div class="col-lg-5 col-md-7">
+
+        <div class="card shadow-lg border-0">
+
+            <!-- Card Header -->
+
+            <div class="card-header bg-primary text-white text-center py-4">
+
+                <h2 class="fw-bold mb-1">
+                    🛡 Project SENTINEL
+                </h2>
+
+                <p class="mb-0">
+                    Intelligent Academic Management System
+                </p>
+
+            </div>
+
+            <!-- Card Body -->
+
+            <div class="card-body p-4">
+
+                <!-- Flash Messages -->
+
+                {% with messages = get_flashed_messages(with_categories=true) %}
+
+                    {% if messages %}
+
+                        {% for category, message in messages %}
+
+                            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+
+                                {{ message }}
+
+                                <button
+                                    type="button"
+                                    class="btn-close"
+                                    data-bs-dismiss="alert">
+                                </button>
+
+                            </div>
+
+                        {% endfor %}
+
+                    {% endif %}
+
+                {% endwith %}
+
+                <form method="POST" id="loginForm">
+
+                    <!-- Username -->
+
+                    <div class="mb-3">
+
+                        <label class="form-label fw-semibold">
+
+                            Username
+
+                        </label>
+
+                        <input
+                            type="text"
+                            name="username"
+                            class="form-control"
+                            placeholder="Enter Username"
+                            value="{{ request.form.get('username','') }}"
+                            required
+                            autofocus>
+
+                    </div>
+
+                    <!-- Password -->
+
+                    <div class="mb-4">
+
+                        <label class="form-label fw-semibold">
+
+                            Password
+
+                        </label>
+
+                        <div class="input-group">
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                class="form-control"
+                                placeholder="Enter Password"
+                                required>
+
+                            <button
+                                type="button"
+                                class="btn btn-outline-secondary"
+                                onclick="togglePassword()">
+
+                                👁
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Login Button -->
+
+                    <button
+                        type="submit"
+                        id="loginBtn"
+                        class="btn btn-primary w-100">
+
+                        <span id="btnText">
+
+                            🔐 Login
+
+                        </span>
+
+                        <span
+                            id="btnLoading"
+                            class="spinner-border spinner-border-sm d-none">
+
+                        </span>
+
+                    </button>
+
+                </form>
+
+            </div>
+
+            <!-- Footer -->
+
+            <div class="card-footer text-center text-muted">
+
+                Project SENTINEL © 2026
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ==========================================
+     Auto Hide Alerts
+=========================================== -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    const alerts = document.querySelectorAll(".alert");
+
+    alerts.forEach(function(alert){
+
+        setTimeout(function(){
+
+            bootstrap.Alert.getOrCreateInstance(alert).close();
+
+        },5000);
+
+    });
+
+});
+
+</script>
+
+<!-- ==========================================
+     Show / Hide Password
+=========================================== -->
+
+<script>
+
+function togglePassword(){
+
+    const password = document.getElementById("password");
+
+    if(password.type==="password"){
+
+        password.type="text";
+
+    }else{
+
+        password.type="password";
+
+    }
+
+}
+
+</script>
+
+<!-- ==========================================
+     Loading Button
+=========================================== -->
+
+<script>
+
+document.getElementById("loginForm").addEventListener("submit",function(){
+
+    document.getElementById("btnText").classList.add("d-none");
+
+    document.getElementById("btnLoading").classList.remove("d-none");
+
+    document.getElementById("loginBtn").disabled=true;
+
+});
+
+</script>
+
+{% endblock %}

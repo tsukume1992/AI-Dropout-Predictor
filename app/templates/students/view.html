@@ -1,0 +1,150 @@
+{% extends "layouts/dashboard_base.html" %}
+
+{% block title %}
+View Student
+{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+
+        <h2 class="fw-bold">
+            Student Profile
+        </h2>
+
+        <small class="text-muted">
+
+            View student information
+
+        </small>
+
+    </div>
+
+    <a href="{{ url_for('student.index') }}"
+       class="btn btn-secondary">
+
+        ← Back
+
+    </a>
+
+</div>
+
+<div class="card shadow">
+
+<div class="card-header">
+
+    <strong>
+
+        Student Information
+
+    </strong>
+
+</div>
+
+<div class="card-body">
+
+<div class="row">
+
+<div class="col-md-6">
+
+<p>
+
+<strong>Student Number:</strong><br>
+
+{{ student.student_number }}
+
+</p>
+
+<p>
+
+<strong>Full Name:</strong><br>
+
+{{ student.first_name }}
+{{ student.middle_name }}
+{{ student.last_name }}
+
+</p>
+
+<p>
+
+<strong>Course:</strong><br>
+
+{{ student.course_code }}
+
+</p>
+
+<p>
+
+<strong>Section:</strong><br>
+
+{{ student.section_name }}
+
+</p>
+
+<p>
+
+<strong>Year Level:</strong><br>
+
+{{ student.year_level }}
+
+</p>
+
+</div>
+
+<div class="col-md-6">
+
+<p>
+
+<strong>Email:</strong><br>
+
+{{ student.email }}
+
+</p>
+
+<p>
+
+<strong>Contact Number:</strong><br>
+
+{{ student.contact_number }}
+
+</p>
+
+<p>
+
+<strong>Birthdate:</strong><br>
+
+{{ student.birthdate }}
+
+</p>
+
+<p>
+
+<strong>Address:</strong><br>
+
+{{ student.address }}
+
+</p>
+
+<p>
+
+<strong>Status:</strong><br>
+
+<span class="badge bg-success">
+
+{{ student.status }}
+
+</span>
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

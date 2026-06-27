@@ -1,0 +1,211 @@
+{% extends "layouts/dashboard_base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<h2>
+
+Welcome back,
+
+<strong>{{ session.username }}</strong>
+
+👋
+
+</h2>
+
+<p class="text-muted">
+
+Project SENTINEL Intelligent Academic Monitoring System
+
+</p>
+
+<hr>
+
+<div class="row">
+
+    <div class="col-md-3 mb-3">
+        <div class="card shadow border-start border-primary border-4">
+            <div class="card-body text-center">
+                <h6>Total Students</h6>
+                <h2>{{ counts.students }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card shadow border-start border-success border-4">
+            <div class="card-body text-center">
+                <h6>Total Faculty</h6>
+                <h2>{{ counts.faculty }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card shadow border-start border-warning border-4">
+            <div class="card-body text-center">
+                <h6>Total Subjects</h6>
+                <h2>{{ counts.subjects }}</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-3 mb-3">
+        <div class="card shadow border-start border-danger border-4">
+            <div class="card-body text-center">
+                <h6>Total Courses</h6>
+                <h2>{{ counts.courses }}</h2>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row mt-4">
+
+    <div class="col-md-6">
+
+        <div class="card shadow">
+
+            <div class="card-header bg-primary text-white">
+                🤖 AI Prediction Summary
+            </div>
+
+            <div class="card-body">
+
+                <table class="table table-bordered">
+
+                    <tr>
+                        <th>High Risk</th>
+                        <td>{{ counts.high_risk }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Medium Risk</th>
+                        <td>{{ counts.medium_risk }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>Low Risk</th>
+                        <td>{{ counts.low_risk }}</td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+
+        <div class="card shadow">
+
+            <div class="card-header bg-success text-white">
+                Recent Activities
+            </div>
+
+            <div class="card-body">
+
+                <table class="table table-hover">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Action</th>
+
+                            <th>Date</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+<tbody>
+
+    {% if counts.activities %}
+
+        {% for activity in counts.activities %}
+
+        <tr>
+
+            <td>{{ activity.action }}</td>
+
+            <td>{{ activity.created_at }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+    {% else %}
+
+        <tr>
+
+            <td colspan="2" class="text-center text-muted">
+                No recent activities available.
+            </td>
+
+        </tr>
+
+    {% endif %}
+
+</tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row mt-4">
+
+    <div class="col-md-12">
+
+        <div class="card shadow">
+
+            <div class="card-header bg-dark text-white">
+
+                Quick Actions
+
+            </div>
+
+            <div class="card-body">
+
+                <div class="d-flex gap-3 flex-wrap">
+
+                    <a href="#" class="btn btn-primary">
+                        👨 Add Student
+                    </a>
+
+                    <a href="#" class="btn btn-success">
+                        📅 Attendance
+                    </a>
+
+                    <a href="#" class="btn btn-warning">
+                        📖 Grades
+                    </a>
+
+                    <a href="#" class="btn btn-danger">
+                        🤖 AI Prediction
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

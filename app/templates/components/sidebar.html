@@ -1,0 +1,158 @@
+<div class="sidebar bg-dark text-white d-flex flex-column shadow-lg"
+     style="
+        width:250px;
+        height:100vh;
+        position:fixed;
+        top:0;
+        left:0;
+        overflow-y:auto;
+        z-index:1000;
+     ">
+
+    <!-- ===================================================== -->
+    <!-- Logo -->
+    <!-- ===================================================== -->
+
+    <div class="text-center py-4 border-bottom">
+
+        <h2 class="fw-bold mb-1">
+            🛡 SENTINEL
+        </h2>
+
+        <small class="text-secondary">
+            Intelligent Academic System
+        </small>
+
+    </div>
+
+
+    <!-- ===================================================== -->
+    <!-- Navigation -->
+    <!-- ===================================================== -->
+
+    <div class="flex-grow-1">
+
+        <!-- MAIN -->
+
+        <div class="px-3 pt-4 pb-2 text-uppercase text-secondary small fw-bold">
+
+            Main
+
+        </div>
+
+        <a class="nav-link text-white px-4 py-3"
+           href="{{ url_for('auth.dashboard') }}">
+
+            📊 Dashboard
+
+        </a>
+
+
+        <!-- Academic Management -->
+
+        <div class="px-3 pt-4 pb-2 text-uppercase text-secondary small fw-bold">
+
+            Academic Management
+
+        </div>
+
+        <a class="nav-link text-white px-4 py-3"
+           href="{{ url_for('student.index') }}">
+
+            👨 Students
+
+        </a>
+
+        <a class="nav-link text-white px-4 py-3"
+           href="#">
+
+            👩 Faculty
+
+        </a>
+
+        <a class="nav-link text-white px-4 py-3"
+           href="#">
+
+            📚 Subjects
+
+        </a>
+
+        <a class="nav-link text-white px-4 py-3"
+           href="#">
+
+            🎓 Courses
+
+        </a>
+
+
+        <!-- Academic Records -->
+
+        <div class="px-3 pt-4 pb-2 text-uppercase text-secondary small fw-bold">
+
+            Academic Records
+
+        </div>
+
+        <a class="nav-link text-white px-4 py-3"
+           href="#">
+
+            📅 Attendance
+
+        </a>
+
+        <a class="nav-link text-white px-4 py-3"
+           href="#">
+
+            📝 Assessments
+
+        </a>
+
+        <a class="nav-link text-white px-4 py-3"
+           href="#">
+
+            📊 Grades
+
+        </a>
+
+
+        <!-- Artificial Intelligence -->
+
+        <div class="px-3 pt-4 pb-2 text-uppercase text-secondary small fw-bold">
+
+            Artificial Intelligence
+
+        </div>
+
+        <a class="nav-link text-white px-4 py-3"
+           href="#">
+
+            🤖 AI Prediction
+
+        </a>
+
+        <a class="nav-link text-white px-4 py-3"
+           href="#">
+
+            📈 Reports
+
+        </a>
+
+    </div>
+
+
+    <!-- ===================================================== -->
+    <!-- Logout -->
+    <!-- ===================================================== -->
+
+    <div class="border-top p-3 mt-auto">
+
+        <a href="{{ url_for('auth.logout') }}"
+           class="btn btn-danger w-100">
+
+            🚪 Logout
+
+        </a>
+
+    </div>
+
+</div>
