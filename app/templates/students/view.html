@@ -15,9 +15,7 @@ View Student
         </h2>
 
         <small class="text-muted">
-
             View student information
-
         </small>
 
     </div>
@@ -31,115 +29,159 @@ View Student
 
 </div>
 
+
 <div class="card shadow">
-
-<div class="card-header">
-
-    <strong>
-
-        Student Information
-
-    </strong>
-
-</div>
 
 <div class="card-body">
 
 <div class="row">
 
-<div class="col-md-6">
+    <!-- ========================================= -->
+    <!-- Profile Photo -->
+    <!-- ========================================= -->
 
-<p>
+    <div class="col-lg-3 text-center border-end">
 
-<strong>Student Number:</strong><br>
+        {% if student.photo %}
 
-{{ student.student_number }}
+        <img
+            src="{{ url_for('static', filename='uploads/students/' ~ student.photo) }}"
+            class="img-thumbnail rounded-circle shadow"
+            style="width:220px;height:220px;object-fit:cover;">
 
-</p>
+        {% else %}
 
-<p>
+        <img
+            src="{{ url_for('static', filename='uploads/students/default.png') }}"
+            class="img-thumbnail rounded-circle shadow"
+            style="width:220px;height:220px;object-fit:cover;">
 
-<strong>Full Name:</strong><br>
+        {% endif %}
 
-{{ student.first_name }}
-{{ student.middle_name }}
-{{ student.last_name }}
+        <h4 class="mt-3 mb-1">
 
-</p>
+            {{ student.first_name }}
+            {{ student.middle_name }}
+            {{ student.last_name }}
 
-<p>
+        </h4>
 
-<strong>Course:</strong><br>
+        <p class="text-muted">
 
-{{ student.course_code }}
+            {{ student.student_number }}
 
-</p>
+        </p>
 
-<p>
+        {% if student.status == "Active" %}
 
-<strong>Section:</strong><br>
+            <span class="badge bg-success fs-6">
 
-{{ student.section_name }}
+                {{ student.status }}
 
-</p>
+            </span>
 
-<p>
+        {% else %}
 
-<strong>Year Level:</strong><br>
+            <span class="badge bg-danger fs-6">
 
-{{ student.year_level }}
+                {{ student.status }}
 
-</p>
+            </span>
 
-</div>
+        {% endif %}
 
-<div class="col-md-6">
+    </div>
 
-<p>
 
-<strong>Email:</strong><br>
+    <!-- ========================================= -->
+    <!-- Student Information -->
+    <!-- ========================================= -->
 
-{{ student.email }}
+    <div class="col-lg-9">
 
-</p>
+        <h5 class="mb-4">
 
-<p>
+            📋 Student Information
 
-<strong>Contact Number:</strong><br>
+        </h5>
 
-{{ student.contact_number }}
+        <div class="row">
 
-</p>
+            <div class="col-md-6 mb-3">
 
-<p>
+                <strong>Student Number</strong>
 
-<strong>Birthdate:</strong><br>
+                <p>{{ student.student_number }}</p>
 
-{{ student.birthdate }}
+            </div>
 
-</p>
+            <div class="col-md-6 mb-3">
 
-<p>
+                <strong>Email</strong>
 
-<strong>Address:</strong><br>
+                <p>{{ student.email or "-" }}</p>
 
-{{ student.address }}
+            </div>
 
-</p>
+            <div class="col-md-6 mb-3">
 
-<p>
+                <strong>Course</strong>
 
-<strong>Status:</strong><br>
+                <p>{{ student.course_code }}</p>
 
-<span class="badge bg-success">
+            </div>
 
-{{ student.status }}
+            <div class="col-md-6 mb-3">
 
-</span>
+                <strong>Section</strong>
 
-</p>
+                <p>{{ student.section_name }}</p>
 
-</div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+
+                <strong>Year Level</strong>
+
+                <p>{{ student.year_level }}</p>
+
+            </div>
+
+            <div class="col-md-6 mb-3">
+
+                <strong>Birthdate</strong>
+
+                <p>{{ student.birthdate or "-" }}</p>
+
+            </div>
+
+            <div class="col-md-6 mb-3">
+
+                <strong>Contact Number</strong>
+
+                <p>{{ student.contact_number or "-" }}</p>
+
+            </div>
+
+            <div class="col-md-6 mb-3">
+
+                <strong>Sex</strong>
+
+                <p>{{ student.sex }}</p>
+
+            </div>
+
+            <div class="col-12">
+
+                <strong>Address</strong>
+
+                <p>{{ student.address or "-" }}</p>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 

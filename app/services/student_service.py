@@ -207,7 +207,6 @@ def email_exists(email, student_id=None):
 # ==========================================================
 # Save Student
 # ==========================================================
-
 def save_student(data):
 
     connection = get_db_connection()
@@ -229,12 +228,13 @@ def save_student(data):
             course_id,
             section_id,
             year_level,
-            status
+            status,
+            photo
         )
 
         VALUES
         (
-            %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s
+            %s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s
         )
 
     """,
@@ -253,7 +253,8 @@ def save_student(data):
         data["course_id"],
         data["section_id"],
         data["year_level"],
-        data["status"]
+        data["status"],
+        data["photo"]
 
     ))
 
@@ -261,7 +262,6 @@ def save_student(data):
 
     cursor.close()
     connection.close()
-
 
 # ==========================================================
 # Get Student By ID

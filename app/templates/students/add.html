@@ -23,7 +23,7 @@ Add Student
 </div>
 
 
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
 
 <div class="card shadow">
 
@@ -256,27 +256,88 @@ Add Student
 
     <!-- Status -->
 
-    <div class="col-md-2 mb-3">
+   <!-- Status -->
 
-        <label class="form-label">
-            Status
-        </label>
+<div class="col-md-2 mb-3">
 
-        <select
-            name="status"
-            class="form-select">
+    <label class="form-label">
+        Status
+    </label>
 
-            <option value="Active">
-                Active
-            </option>
+    <select
+        name="status"
+        class="form-select">
 
-            <option value="Inactive">
-                Inactive
-            </option>
+        <option value="Active">
+            Active
+        </option>
 
-        </select>
+        <option value="Inactive">
+            Inactive
+        </option>
+
+    </select>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- Student Profile Photo -->
+<!-- ===================================================== -->
+
+<div class="col-md-12">
+
+    <hr>
+
+    <h5 class="mb-3">
+
+        📷 Student Profile Photo
+
+    </h5>
+
+</div>
+
+<div class="col-md-3 text-center">
+
+    <img
+        id="preview"
+        src="{{ url_for('static', filename='uploads/students/default.png') }}"
+        class="img-thumbnail rounded-circle shadow"
+        style="width:180px;height:180px;object-fit:cover;">
+
+</div>
+
+<div class="col-md-9">
+
+    <label class="form-label">
+
+        Upload Photo
+
+    </label>
+
+    <input
+        type="file"
+        name="photo"
+        id="photo"
+        class="form-control"
+        accept=".jpg,.jpeg,.png">
+
+    <div class="form-text">
+
+        Accepted formats:
+        JPG,
+        JPEG,
+        PNG
+
+        <br>
+
+        Recommended size:
+        500 × 500 pixels
 
     </div>
+
+</div>
+
+</div>
 
 </div>
 
@@ -297,5 +358,41 @@ Add Student
 </div>
 
 </form>
+<script>
+
+const photoInput =
+document.getElementById("photo");
+
+const preview =
+document.getElementById("preview");
+
+photoInput.addEventListener(
+    "change",
+    function(e){
+
+        const file =
+        e.target.files[0];
+
+        if(file){
+
+            const reader =
+            new FileReader();
+
+            reader.onload =
+            function(event){
+
+                preview.src =
+                event.target.result;
+
+            };
+
+            reader.readAsDataURL(file);
+
+        }
+
+    }
+);
+
+</script>
 
 {% endblock %}
